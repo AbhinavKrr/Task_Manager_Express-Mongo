@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const tasks_router = require('./routes/tasks_router');
 
-// Parse json requests
+// Parse json requests using middle ware
 app.use(express.json());
 
 app.use('/api/v1/tasks', tasks_router);
