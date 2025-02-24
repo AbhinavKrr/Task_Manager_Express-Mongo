@@ -7,7 +7,7 @@ const getTask = (req, res)=>{
 }
 
 const createTask = (req, res)=>{
-    res.status(201).json({success: true, data:[]});
+    res.status(201).json(req.body);
 }
 
 const updateTask = (req, res)=>{
