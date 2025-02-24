@@ -7,7 +7,7 @@ const getTask = (req, res)=>{
 }
 
 const createTask = (req, res)=>{
-    res.status(200).json({success: true, data:[]});
+    res.status(201).json({success: true, data:[]});
 }
 
 const updateTask = (req, res)=>{
@@ -17,6 +17,5 @@ const updateTask = (req, res)=>{
 const deleteTask =  (req, res)=>{
     res.status(200).json({success: true, data:[]});
 }
-
 
 module.exports = {getAllTasks, getTask, createTask, updateTask, deleteTask}
