@@ -1,15 +1,12 @@
-// console.log("Welcome to the Projects");
-
 const express = require('express');
 const app = express();
 const tasks_router = require('./routes/tasks_router');
-
-
-require('./Db/connect');
+const connectDB = require('./Db/connect');
 
 // Parse json requests using middle ware
 app.use(express.json());
 
+// applying this all routes/paths inside task router
 app.use('/api/v1/tasks', tasks_router);
 
 
@@ -26,9 +23,19 @@ app.get('/hello', (req, res)=>{
  
 const port = 3000;
 
-app.listen(port, ()=>{
-    console.log(`Server is running on port number ${port}`);
-})
+const start = async () => {
+    try{
+        await connectDB()
+        app.listen(port, ()=>{
+            console.log(`Server is running on port number ${port}`);
+        })
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+start();
 
 // Mongo-DB --> document === just like table => it is a set key value pairs
 
