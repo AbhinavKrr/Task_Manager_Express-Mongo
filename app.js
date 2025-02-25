@@ -38,7 +38,7 @@ const start = async () => {
 
 start();
 
-// Mongo-DB --> document === just like table => it is a set key value pairs
+// Mongo-DB --> document === just like table => it is a set of key value pairs
 
 // Data Types==Strings, Numbers, Arrays, objects, boolean => just like-> Local server pe install, Cloud Servers
 
