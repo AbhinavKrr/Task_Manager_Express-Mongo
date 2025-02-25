@@ -4,6 +4,10 @@ const tasks_router = require('./routes/tasks_router');
 const connectDB = require('./Db/connect');
 require('dotenv').config();
 
+// Serve static files middleware express.static()
+
+app.use(express.static('./public'));
+
 // Parse json requests using middle ware
 app.use(express.json());
 
@@ -11,9 +15,9 @@ app.use(express.json());
 app.use('/api/v1/tasks', tasks_router);
 
 
-app.get('/hello', (req, res)=>{
-    res.send("Home - Welcome");
-})
+// app.get('/hello', (req, res)=>{
+//     res.send("Home - Welcome");
+// })
 
 // Done in routes
 // app.get('/api/v1/tasks'); -- gets all tasks

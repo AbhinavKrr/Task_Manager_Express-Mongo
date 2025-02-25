@@ -38,8 +38,22 @@ const createTask = async (req, res)=>{
 }
 
 // Update a Task
-const updateTask = (req, res)=>{
-    res.status(200).json({success: true, data:[]});
+const updateTask = async (req, res)=>{
+    try{
+        const {id:taskID} = req.params;
+        const task = await Task.findOneAndUpdate({_id:taskID}, req.body, {
+            new: true, 
+            runValidators: true
+        });
+        
+        if(!task){
+            return res.status(404).json({msg:"No data Found"});
+        }
+        res.status(200).json({task});
+    }
+    catch(err){
+        res.status(500).json({msg:err});
+    }
 }
 
 // Delete a task
@@ -50,7 +64,7 @@ const deleteTask = async (req, res)=>{
         if(!task){
             return res.status(404).json({msg:"No data Found"});
         }
-        res.status(200).json({task:task,deleted:true});
+        res.status(200).json({task});
     }
     catch(err){
         res.status(500).json({msg:err});
