@@ -3,6 +3,7 @@ const app = express();
 const tasks_router = require('./routes/tasks_router');
 const connectDB = require('./Db/connect');
 require('dotenv').config();
+const handleUnknownRoutes = require("./middleware/unknown");
 
 // Serve static files middleware express.static()
 
@@ -11,9 +12,10 @@ app.use(express.static('./public'));
 // Parse json requests using middle ware
 app.use(express.json());
 
+
 // applying this all routes/paths inside task router
 app.use('/api/v1/tasks', tasks_router);
-
+app.use(handleUnknownRoutes);
 
 // app.get('/hello', (req, res)=>{
 //     res.send("Home - Welcome");
