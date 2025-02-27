@@ -31,7 +31,7 @@ app.use(errroHandlerMiddleware);
 // app.patch('/api/v1/tasks/id') -- update tasks
 // app.delete('/api/v1/tasks/:id') -- delete tasks
  
-const port = 3000;
+const port = process.env.port || 3000;
 
 const start = async () => {
     try{
